@@ -52,7 +52,7 @@ namespace MESSI
             this.lb_capçalera.AutoSize = true;
             this.lb_capçalera.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_capçalera.ForeColor = System.Drawing.Color.Silver;
-            this.lb_capçalera.Location = new System.Drawing.Point(193, 9);
+            this.lb_capçalera.Location = new System.Drawing.Point(177, 9);
             this.lb_capçalera.Name = "lb_capçalera";
             this.lb_capçalera.Size = new System.Drawing.Size(529, 65);
             this.lb_capçalera.TabIndex = 1;
@@ -93,6 +93,7 @@ namespace MESSI
             this.bt_GestioUsuaris.TabIndex = 4;
             this.bt_GestioUsuaris.Text = "Gestió d\'usuaris";
             this.bt_GestioUsuaris.UseVisualStyleBackColor = false;
+            this.bt_GestioUsuaris.Click += new System.EventHandler(this.bt_GestioUsuaris_Click);
             // 
             // form_PaginaAdministracio
             // 
