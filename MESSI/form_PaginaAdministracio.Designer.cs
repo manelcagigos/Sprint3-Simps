@@ -42,9 +42,8 @@ namespace MESSI
             this.pnael_superior.BackColor = System.Drawing.Color.Black;
             this.pnael_superior.Controls.Add(this.lb_capçalera);
             this.pnael_superior.Location = new System.Drawing.Point(-2, 0);
-            this.pnael_superior.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnael_superior.Name = "pnael_superior";
-            this.pnael_superior.Size = new System.Drawing.Size(903, 85);
+            this.pnael_superior.Size = new System.Drawing.Size(803, 68);
             this.pnael_superior.TabIndex = 0;
             // 
             // lb_capçalera
@@ -52,9 +51,9 @@ namespace MESSI
             this.lb_capçalera.AutoSize = true;
             this.lb_capçalera.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_capçalera.ForeColor = System.Drawing.Color.Silver;
-            this.lb_capçalera.Location = new System.Drawing.Point(177, 9);
+            this.lb_capçalera.Location = new System.Drawing.Point(157, 7);
             this.lb_capçalera.Name = "lb_capçalera";
-            this.lb_capçalera.Size = new System.Drawing.Size(529, 65);
+            this.lb_capçalera.Size = new System.Drawing.Size(442, 54);
             this.lb_capçalera.TabIndex = 1;
             this.lb_capçalera.Text = "Administració de MESSI";
             // 
@@ -62,22 +61,21 @@ namespace MESSI
             // 
             this.bt_regeneracioCoors.BackColor = System.Drawing.Color.White;
             this.bt_regeneracioCoors.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_regeneracioCoors.Location = new System.Drawing.Point(91, 265);
-            this.bt_regeneracioCoors.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bt_regeneracioCoors.Location = new System.Drawing.Point(81, 212);
             this.bt_regeneracioCoors.Name = "bt_regeneracioCoors";
-            this.bt_regeneracioCoors.Size = new System.Drawing.Size(222, 128);
+            this.bt_regeneracioCoors.Size = new System.Drawing.Size(197, 102);
             this.bt_regeneracioCoors.TabIndex = 0;
             this.bt_regeneracioCoors.Text = "Regeneració de Coordenades";
             this.bt_regeneracioCoors.UseVisualStyleBackColor = false;
+            this.bt_regeneracioCoors.Click += new System.EventHandler(this.bt_regeneracioCoors_Click);
             // 
             // bt_GestioDispositiu
             // 
             this.bt_GestioDispositiu.BackColor = System.Drawing.Color.White;
             this.bt_GestioDispositiu.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_GestioDispositiu.Location = new System.Drawing.Point(336, 265);
-            this.bt_GestioDispositiu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bt_GestioDispositiu.Location = new System.Drawing.Point(299, 212);
             this.bt_GestioDispositiu.Name = "bt_GestioDispositiu";
-            this.bt_GestioDispositiu.Size = new System.Drawing.Size(222, 128);
+            this.bt_GestioDispositiu.Size = new System.Drawing.Size(197, 102);
             this.bt_GestioDispositiu.TabIndex = 3;
             this.bt_GestioDispositiu.Text = "Gestió de dispositius";
             this.bt_GestioDispositiu.UseVisualStyleBackColor = false;
@@ -86,10 +84,9 @@ namespace MESSI
             // 
             this.bt_GestioUsuaris.BackColor = System.Drawing.Color.White;
             this.bt_GestioUsuaris.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_GestioUsuaris.Location = new System.Drawing.Point(582, 265);
-            this.bt_GestioUsuaris.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bt_GestioUsuaris.Location = new System.Drawing.Point(517, 212);
             this.bt_GestioUsuaris.Name = "bt_GestioUsuaris";
-            this.bt_GestioUsuaris.Size = new System.Drawing.Size(222, 128);
+            this.bt_GestioUsuaris.Size = new System.Drawing.Size(197, 102);
             this.bt_GestioUsuaris.TabIndex = 4;
             this.bt_GestioUsuaris.Text = "Gestió d\'usuaris";
             this.bt_GestioUsuaris.UseVisualStyleBackColor = false;
@@ -97,16 +94,15 @@ namespace MESSI
             // 
             // form_PaginaAdministracio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(900, 562);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.bt_GestioUsuaris);
             this.Controls.Add(this.bt_GestioDispositiu);
             this.Controls.Add(this.pnael_superior);
             this.Controls.Add(this.bt_regeneracioCoors);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "form_PaginaAdministracio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_PaginaAdministracio_FormClosing);

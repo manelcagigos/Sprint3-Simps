@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="form_AdminCoordinates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_AdminCoordinates.Designer.cs">
+      <DependentUpon>form_AdminCoordinates.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTrustedUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form_AdminCoordinates.resx">
+      <DependentUpon>form_AdminCoordinates.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_PaginaAdministracio.resx">
       <DependentUpon>form_PaginaAdministracio.cs</DependentUpon>
     </EmbeddedResource>
