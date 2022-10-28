@@ -22,22 +22,22 @@ namespace MESSI
             Application.Exit();
         }
 
+        Dictionary<string, string> coordenades = new Dictionary<string, string>();
+
         private void btGenerate_Click(object sender, EventArgs e)
         {
             Random R = new Random();
 
             List<String> LletrasNumeros = new List<string>();
-            List<String> numeros_teclat = new List<string>() { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
             Queue<String> cua_numeros = new Queue<string>();
 
             //coordenades.Add("A1", "1234");
             //tb_password.Text = coordenades["A1"];
 
             string LletraNumero, num_aleatori_pass;
-            int longitud, posicio_aleatoria, posicio_aleatoria_teclat, longitud_cua;
+            int longitud, posicio_aleatoria, longitud_cua;
 
             LletraNumero = "";
-            posicio_aleatoria_teclat = 0;
 
             //for per la creacio de les coordenades (A1 fins a D5)
             for (char i = (char)65; i < (char)69; i++)
@@ -55,21 +55,21 @@ namespace MESSI
             longitud = LletrasNumeros.Count;
             posicio_aleatoria = R.Next(0, longitud);
 
-            //longitud_cua = cua_numeros.Count;
+            longitud_cua = cua_numeros.Count;
 
             //Creacio dels butons + adjudicacio dels numeros amb aleatori desde una cua
-            //using (Font fuente = new Font("Nirmala UI", 16f))
+            //using (Font fuente = new Font("Nirmala UI", 12f))
             //{
             //    for (int i = 0; i < longitud_cua; i++)
             //    {
-            //        TextBox txt_panel = new TextBox();
-            //        txt_panel.Width = 100;
-            //        txt_panel.Height = 68;
-            //        txt_panel.Font = fuente;
+            //        Label lb_panel = new Label();
+            //        lb_panel.Width = 100;
+            //        lb_panel.Height = 68;
+            //        lb_panel.Font = fuente;
 
-            //        tbLP_NumerosAleatoris.Controls.Add(txt_panel);
-            //        btn_panel.Text = cua_numeros.Dequeue();
-            //        btn_panel.Click += new System.EventHandler(this.btns_Click);
+            //        tlpCoordinates.Controls.Add(lb_panel);
+            //        lb_panel.Text = cua_numeros.Dequeue();
+            //        //btn_panel.Click += new System.EventHandler(this.btns_Click);
             //    }
             //}
 
@@ -102,9 +102,24 @@ namespace MESSI
                 }
             }
 
-            if (coordenades.ContainsKey(lb_LLetraNumero.Text))
+            //if (coordenades.ContainsKey(lb_LLetraNumero.Text))
+            //{
+
+            //}
+
+            using (Font fuente = new Font("Nirmala UI", 12f))
             {
-                lb_password.Text = coordenades[lb_LLetraNumero.Text];
+                for (int i = 0; i < longitud_cua; i++)
+                {
+                    Label lb_panel = new Label();
+                    lb_panel.Width = 100;
+                    lb_panel.Height = 68;
+                    lb_panel.Font = fuente;
+
+                    tlpCoordinates.Controls.Add(lb_panel);
+                    lb_panel.Text = coordenades["A1"];
+                    //btn_panel.Click += new System.EventHandler(this.btns_Click);
+                }
             }
         }
     }

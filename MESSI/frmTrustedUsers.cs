@@ -48,7 +48,7 @@ namespace MESSI
             //}
 
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings[key].Value = combUser.Text.ToString();
+            config.AppSettings.Settings[key].Value = combUser.Text;
             config.Save(ConfigurationSaveMode.Modified);
 
             ConfigurationManager.RefreshSection("appSettings");
