@@ -33,5 +33,12 @@ namespace MESSI
 
             this.Hide();
         }
+
+        private void bt_GestioDispositiu_Click(object sender, EventArgs e)
+        {
+            Form fmTrust = new Form();
+            fmTrust.Show();
+            this.Hide();
+        }
     }
 }
