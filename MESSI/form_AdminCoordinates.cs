@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,23 +20,30 @@ namespace MESSI
 
         private void form_AdminCoordinates_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            Assembly asm = Assembly.GetEntryAssembly();
+            Type formtype = asm.GetType(string.Format("{0}.{1}", "MESSI", "form_PaginaAdministracio"));
+
+            Form frmTrustedUsers = (Form)Activator.CreateInstance(formtype);
+            frmTrustedUsers.Show();
+
+            this.Hide();
         }
 
         Dictionary<string, string> coordenades = new Dictionary<string, string>();
+        List<String> LletrasNumeros = new List<string>();
 
         private void btGenerate_Click(object sender, EventArgs e)
         {
+            coordenades.Clear();
+            LletrasNumeros.Clear();
+
             Random R = new Random();
-
-            List<String> LletrasNumeros = new List<string>();
-            Queue<String> cua_numeros = new Queue<string>();
-
+            
             //coordenades.Add("A1", "1234");
             //tb_password.Text = coordenades["A1"];
 
             string LletraNumero, num_aleatori_pass;
-            int longitud, posicio_aleatoria, longitud_cua;
+            int longitud, posicio_aleatoria;
 
             LletraNumero = "";
 
@@ -55,27 +63,8 @@ namespace MESSI
             longitud = LletrasNumeros.Count;
             posicio_aleatoria = R.Next(0, longitud);
 
-            longitud_cua = cua_numeros.Count;
-
-            //Creacio dels butons + adjudicacio dels numeros amb aleatori desde una cua
-            //using (Font fuente = new Font("Nirmala UI", 12f))
-            //{
-            //    for (int i = 0; i < longitud_cua; i++)
-            //    {
-            //        Label lb_panel = new Label();
-            //        lb_panel.Width = 100;
-            //        lb_panel.Height = 68;
-            //        lb_panel.Font = fuente;
-
-            //        tlpCoordinates.Controls.Add(lb_panel);
-            //        lb_panel.Text = cua_numeros.Dequeue();
-            //        //btn_panel.Click += new System.EventHandler(this.btns_Click);
-            //    }
-            //}
-
             int contador = 0;
 
-            //bucle per la creacio de els numeros vinculats a les coordenades
             while (contador < LletrasNumeros.Count)
             {
                 num_aleatori_pass = Convert.ToString(R.Next(0, 10000));
@@ -101,26 +90,49 @@ namespace MESSI
                     contador++;
                 }
             }
+        }
 
-            //if (coordenades.ContainsKey(lb_LLetraNumero.Text))
-            //{
+        private void btShow_Click(object sender, EventArgs e)
+        {
+            int columna = tlpCoordinates.ColumnCount - 1;
+            int row = tlpCoordinates.RowCount - 1;
 
-            //}
+            int total_casellas = columna * row;
 
-            using (Font fuente = new Font("Nirmala UI", 12f))
+            for(int i = 0; i <= total_casellas; i++)
             {
-                for (int i = 0; i < longitud_cua; i++)
-                {
-                    Label lb_panel = new Label();
-                    lb_panel.Width = 100;
-                    lb_panel.Height = 68;
-                    lb_panel.Font = fuente;
+                tlpCoordinates.Controls.Remove(tlpCoordinates.GetControlFromPosition(1, 1));
+            }
 
-                    tlpCoordinates.Controls.Add(lb_panel);
-                    lb_panel.Text = coordenades["A1"];
-                    //btn_panel.Click += new System.EventHandler(this.btns_Click);
+            if(coordenades.Count == 0)
+            {
+                lbAdvertencia.Text = "Primero clicar al boton 'Generate' y luego a 'Show'";
+            }
+            else
+            {
+                lbAdvertencia.Text = "";
+
+                using (Font fuente = new Font("Nirmala UI", 12f, FontStyle.Bold))
+                {
+                    for (int i = 0; i < total_casellas; i++)
+                    {
+                        Label lb_panel = new Label();
+                        lb_panel.Width = 100;
+                        lb_panel.Height = 68;
+                        lb_panel.Font = fuente;
+                        lb_panel.Dock = DockStyle.Fill;
+                        lb_panel.Anchor = AnchorStyles.None;
+
+                        tlpCoordinates.Controls.Add(lb_panel);
+                        lb_panel.Text = coordenades[LletrasNumeros[i]];
+                    }
                 }
             }
+        }
+
+        private void form_AdminCoordinates_Load(object sender, EventArgs e)
+        {
+            tlpCoordinates.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
         }
     }
 }
