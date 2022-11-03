@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,7 +21,13 @@ namespace MESSI
 
         private void frmTrustedUsers_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            Assembly asm = Assembly.GetEntryAssembly();
+            Type formtype = asm.GetType(string.Format("{0}.{1}", "MESSI", "form_PaginaAdministracio"));
+
+            Form frmTrustedUsers = (Form)Activator.CreateInstance(formtype);
+            frmTrustedUsers.Show();
+
+            this.Hide();
         }
 
         private void btRegister_Click(object sender, EventArgs e)
