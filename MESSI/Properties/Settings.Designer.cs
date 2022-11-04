@@ -22,5 +22,16 @@ namespace Sprint3.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=CAFUNEPORTATIL\\SQLEXPRESS;Initial Catalog=DarkCore;Integrated Securit" +
+            "y=True")]
+        public string DarkCoreConnectionString {
+            get {
+                return ((string)(this["DarkCoreConnectionString"]));
+            }
+        }
     }
 }

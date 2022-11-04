@@ -69,6 +69,9 @@ namespace MESSI
             txtMac.Text = direccion[0].ToString().ToUpper();
             txtHost.Text = Environment.MachineName.ToUpper();
 
+            FuncionesDB db = new FuncionesDB();
+            
+
             //Verificar boton:
             SqlConnection conect;
             conect = new SqlConnection(rutaAcceso);

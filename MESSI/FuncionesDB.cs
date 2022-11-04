@@ -7,18 +7,19 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 
-namespace ClassLibrary1
+
+namespace MESSI
 {
-    public abstract class Class1
+    public class FuncionesDB
     {
         public SqlConnection conn;
         private string query;
         DataSet dts;
-
+        
         public virtual void Connectar()
         {
             string cnx = "";
-            ConnectionStringSettings conf = ConfigurationManager.ConnectionStrings["ConnexionSecureCore_Manel"];
+            ConnectionStringSettings conf = ConfigurationManager.ConnectionStrings["Sprint3.Properties.Settings.DarkCoreConnectionString"];
 
             if (conf != null)
             {
