@@ -91,6 +91,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrustedDevices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrustedDevices.Designer.cs">
+      <DependentUpon>TrustedDevices.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="form_AdminCoordinates.resx">
       <DependentUpon>form_AdminCoordinates.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +128,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TrustedDevices.resx">
+      <DependentUpon>TrustedDevices.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

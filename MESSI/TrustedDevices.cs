@@ -10,8 +10,9 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Net.NetworkInformation;
 using System.Data.SqlClient;
+using System.Reflection;
 
-namespace GestioDeDispositivo
+namespace MESSI
 {
     public partial class TrustedDevices : Form
     {
@@ -20,9 +21,9 @@ namespace GestioDeDispositivo
             InitializeComponent();
         }
 
-        string rutaAcceso = "Data Source=CAFUNEPORTATIL\\SQLEXPRESS;Initial Catalog=MACSBBDD;Integrated Security=True";
-        string consulta = "select * from dbo.datosdebbdd";
-        bool existe = false;
+        //string rutaAcceso = "Data Source=CAFUNEPORTATIL\\SQLEXPRESS;Initial Catalog=MACSBBDD;Integrated Security=True";
+        //string consulta = "select * from dbo.datosdebbdd";
+        //bool existe = false;
 
         //Metodo para conseguir la MAC del PC
         //Se necesita 2 usings, Collections y Net.Network
@@ -68,29 +69,29 @@ namespace GestioDeDispositivo
             txtMac.Text = direccion[0].ToString().ToUpper();
             txtHost.Text = Environment.MachineName.ToUpper();
 
-            //Verificar boton:
-            SqlConnection conect;
-            conect = new SqlConnection(rutaAcceso);
+            ////Verificar boton:
+            //SqlConnection conect;
+            //conect = new SqlConnection(rutaAcceso);
 
-            SqlDataAdapter tabla;
-            tabla = new SqlDataAdapter(consulta, conect);
+            //SqlDataAdapter tabla;
+            //tabla = new SqlDataAdapter(consulta, conect);
 
-            conect.Open();
+            //conect.Open();
 
-            DataSet dts = new DataSet();
-            tabla.Fill(dts, "mac");
+            //DataSet dts = new DataSet();
+            //tabla.Fill(dts, "mac");
 
-            conect.Close();
+            //conect.Close();
 
-            DataRow dr = dts.Tables[0].NewRow();
+            //DataRow dr = dts.Tables[0].NewRow();
 
-            for (int i = 0; i < dts.Tables.Count; i++)
-            {
-                dts.Tables[i].Rows.Contains(txtMac);
-                existe = true;
-            }
+            //for (int i = 0; i < dts.Tables.Count; i++)
+            //{
+            //    dts.Tables[i].Rows.Contains(txtMac);
+            //    existe = true;
+            //}
 
-            dr["MAC"] = txtMac.Text;
+            //dr["MAC"] = txtMac.Text;
 
             
         }
@@ -106,6 +107,17 @@ namespace GestioDeDispositivo
         {
 
 
+        }
+
+        private void TrustedDevices_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Assembly asm = Assembly.GetEntryAssembly();
+            Type formtype = asm.GetType(string.Format("{0}.{1}", "MESSI", "form_PaginaAdministracio"));
+
+            Form frmTrustedUsers = (Form)Activator.CreateInstance(formtype);
+            frmTrustedUsers.Show();
+
+            this.Hide();
         }
     }
 }

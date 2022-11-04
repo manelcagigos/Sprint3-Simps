@@ -1,5 +1,5 @@
 ﻿
-namespace GestioDeDispositivo
+namespace MESSI
 {
     partial class TrustedDevices
     {
@@ -41,9 +41,10 @@ namespace GestioDeDispositivo
             // 
             this.lbMac.AutoSize = true;
             this.lbMac.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMac.Location = new System.Drawing.Point(49, 46);
+            this.lbMac.Location = new System.Drawing.Point(74, 71);
+            this.lbMac.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbMac.Name = "lbMac";
-            this.lbMac.Size = new System.Drawing.Size(53, 21);
+            this.lbMac.Size = new System.Drawing.Size(82, 32);
             this.lbMac.TabIndex = 0;
             this.lbMac.Text = "M.A.C.";
             // 
@@ -51,17 +52,19 @@ namespace GestioDeDispositivo
             // 
             this.lbHost.AutoSize = true;
             this.lbHost.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHost.Location = new System.Drawing.Point(49, 89);
+            this.lbHost.Location = new System.Drawing.Point(74, 137);
+            this.lbHost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbHost.Name = "lbHost";
-            this.lbHost.Size = new System.Drawing.Size(84, 21);
+            this.lbHost.Size = new System.Drawing.Size(128, 32);
             this.lbHost.TabIndex = 1;
             this.lbHost.Text = "HostName";
             // 
             // bntSave
             // 
-            this.bntSave.Location = new System.Drawing.Point(53, 141);
+            this.bntSave.Location = new System.Drawing.Point(80, 217);
+            this.bntSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bntSave.Name = "bntSave";
-            this.bntSave.Size = new System.Drawing.Size(105, 33);
+            this.bntSave.Size = new System.Drawing.Size(158, 51);
             this.bntSave.TabIndex = 2;
             this.bntSave.Text = "Save";
             this.bntSave.UseVisualStyleBackColor = true;
@@ -69,9 +72,10 @@ namespace GestioDeDispositivo
             // 
             // bntDel
             // 
-            this.bntDel.Location = new System.Drawing.Point(165, 141);
+            this.bntDel.Location = new System.Drawing.Point(248, 217);
+            this.bntDel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bntDel.Name = "bntDel";
-            this.bntDel.Size = new System.Drawing.Size(105, 33);
+            this.bntDel.Size = new System.Drawing.Size(158, 51);
             this.bntDel.TabIndex = 3;
             this.bntDel.Text = "Delete";
             this.bntDel.UseVisualStyleBackColor = true;
@@ -81,26 +85,28 @@ namespace GestioDeDispositivo
             // 
             this.txtMac.Enabled = false;
             this.txtMac.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMac.Location = new System.Drawing.Point(165, 47);
+            this.txtMac.Location = new System.Drawing.Point(248, 72);
+            this.txtMac.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMac.Name = "txtMac";
-            this.txtMac.Size = new System.Drawing.Size(165, 20);
+            this.txtMac.Size = new System.Drawing.Size(246, 26);
             this.txtMac.TabIndex = 4;
             // 
             // txtHost
             // 
             this.txtHost.Enabled = false;
             this.txtHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHost.Location = new System.Drawing.Point(165, 90);
+            this.txtHost.Location = new System.Drawing.Point(248, 138);
+            this.txtHost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(212, 20);
+            this.txtHost.Size = new System.Drawing.Size(316, 26);
             this.txtHost.TabIndex = 5;
             // 
             // TrustedDevices
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(608, 203);
+            this.ClientSize = new System.Drawing.Size(912, 312);
             this.Controls.Add(this.txtHost);
             this.Controls.Add(this.txtMac);
             this.Controls.Add(this.bntDel);
@@ -108,8 +114,11 @@ namespace GestioDeDispositivo
             this.Controls.Add(this.lbHost);
             this.Controls.Add(this.lbMac);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TrustedDevices";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Trusted Devices";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrustedDevices_FormClosing);
             this.Load += new System.EventHandler(this.TrustedDevices_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -44,5 +44,16 @@ namespace MESSI
 
             this.Hide();
         }
+
+        private void bt_GestioDispositiu_Click(object sender, EventArgs e)
+        {
+            Assembly asm = Assembly.GetEntryAssembly();
+            Type formtype = asm.GetType(string.Format("{0}.{1}", "MESSI", "TrustedDevices"));
+
+            Form frmTrustedUsers = (Form)Activator.CreateInstance(formtype);
+            frmTrustedUsers.Show();
+
+            this.Hide();
+        }
     }
 }
