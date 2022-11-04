@@ -21,9 +21,9 @@ namespace MESSI
             InitializeComponent();
         }
 
-        string rutaAcceso = "Data Source=CAFUNEPORTATIL\\SQLEXPRESS;Initial Catalog=MACSBBDD;Integrated Security=True";
-        string consulta = "select * from dbo.datosdebbdd";
-        bool existe = false;
+        //string rutaAcceso = "Data Source=CAFUNEPORTATIL\\SQLEXPRESS;Initial Catalog=MACSBBDD;Integrated Security=True";
+        //string consulta = "select * from dbo.datosdebbdd";
+        //bool existe = false;
 
         //Metodo para conseguir la MAC del PC
         //Se necesita 2 usings, Collections y Net.Network
@@ -69,32 +69,32 @@ namespace MESSI
             txtMac.Text = direccion[0].ToString().ToUpper();
             txtHost.Text = Environment.MachineName.ToUpper();
 
-            FuncionesDB db = new FuncionesDB();
+            //FuncionesDB db = new FuncionesDB();
             
 
-            //Verificar boton:
-            SqlConnection conect;
-            conect = new SqlConnection(rutaAcceso);
+            ////Verificar boton:
+            //SqlConnection conect;
+            //conect = new SqlConnection(rutaAcceso);
 
-            SqlDataAdapter tabla;
-            tabla = new SqlDataAdapter(consulta, conect);
+            //SqlDataAdapter tabla;
+            //tabla = new SqlDataAdapter(consulta, conect);
 
-            conect.Open();
+            //conect.Open();
 
-            DataSet dts = new DataSet();
-            tabla.Fill(dts, "mac");
+            //DataSet dts = new DataSet();
+            //tabla.Fill(dts, "mac");
 
-            conect.Close();
+            //conect.Close();
 
-            DataRow dr = dts.Tables[0].NewRow();
+            //DataRow dr = dts.Tables[0].NewRow();
 
-            for (int i = 0; i < dts.Tables.Count; i++)
-            {
-                dts.Tables[0].Rows.Contains(txtMac);
-                existe = true;
-            }
+            //for (int i = 0; i < dts.Tables.Count; i++)
+            //{
+            //    dts.Tables[0].Rows.Contains(txtMac);
+            //    existe = true;
+            //}
 
-            dr["MAC"] = txtMac.Text;
+            //dr["MAC"] = txtMac.Text;
 
 
         }

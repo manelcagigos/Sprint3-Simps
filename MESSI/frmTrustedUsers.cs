@@ -14,6 +14,8 @@ namespace MESSI
 {
     public partial class frmTrustedUsers : Form
     {
+        FuncionesDB classeDB = new FuncionesDB();
+
         public frmTrustedUsers()
         {
             InitializeComponent();
@@ -34,31 +36,24 @@ namespace MESSI
         {
             string key = "TrustedUser";
 
-            //try
-            //{
-            //    var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            //    var settings = configFile.AppSettings.Settings;
-            //    if (settings[key] == null)
-            //    {
-            //        settings.Add(key, combUser.Text);
-            //    }
-            //    else
-            //    {
-            //        settings[key].Value = combUser.Text;
-            //    }
-            //    configFile.Save(ConfigurationSaveMode.Modified);
-            //    ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
-            //}
-            //catch (ConfigurationErrorsException)
-            //{
-                  //Console.WriteLine("Error writing app settings");
-            //}
-
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.AppSettings.Settings[key].Value = combUser.Text;
             config.Save(ConfigurationSaveMode.Modified);
 
             ConfigurationManager.RefreshSection("appSettings");
+        }
+
+        private void frmTrustedUsers_Load(object sender, EventArgs e)
+        {
+            classeDB.Connectar();
+
+            DataSet dts = new DataSet();
+
+            dts = classeDB.PortarPerConsulta("Select codeUser From Users");
+
+            combUser.DataBindings.Clear();
+
+            combUser.DataBindings.Add("Items", dts.Tables["Users"], "codeUser");
         }
     }
 }

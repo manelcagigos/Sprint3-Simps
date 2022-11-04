@@ -33,5 +33,16 @@ namespace Sprint3.Properties {
                 return ((string)(this["DarkCoreConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-KV09CDU\\SQLEXPRESS;Initial Catalog=DarkCore;Integrated Securi" +
+            "ty=True")]
+        public string DarkCoreConnectionString1 {
+            get {
+                return ((string)(this["DarkCoreConnectionString1"]));
+            }
+        }
     }
 }
