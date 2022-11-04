@@ -120,7 +120,7 @@ namespace MESSI
                         lb_panel.Width = 100;
                         lb_panel.Height = 68;
                         lb_panel.Font = fuente;
-                        lb_panel.Dock = DockStyle.Fill;
+                        lb_panel.Dock = DockStyle.None;
                         lb_panel.Anchor = AnchorStyles.None;
 
                         tlpCoordinates.Controls.Add(lb_panel);
@@ -132,7 +132,7 @@ namespace MESSI
 
         private void form_AdminCoordinates_Load(object sender, EventArgs e)
         {
-            tlpCoordinates.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            //tlpCoordinates.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
         }
     }
 }
