@@ -24,6 +24,8 @@ namespace MESSI
         string rutaAcceso = "Data Source=CAFUNEPORTATIL\\SQLEXPRESS;Initial Catalog=MACSBBDD;Integrated Security=True";
         string consulta = "select * from TrustedDevices";
         bool existe = false;
+        bool ativarBntDel = false;
+        bool ativarBntSav = false;
 
         //Metodo para conseguir la MAC del PC
         //Se necesita 2 usings, Collections y Net.Network
@@ -88,24 +90,50 @@ namespace MESSI
             if (valor != null)
             {
                 bntDel.BackColor = Color.Green;
+                ativarBntDel = true;
             }
             else
             {
                 bntSave.BackColor = Color.Green;
+                ativarBntSav = true;
             }
         }
 
         private void bntSave_Click(object sender, EventArgs e)
         {
-            
+            if (ativarBntSav)
+            {
 
-            
+            }
+            else
+            {
+                MessageBox.Show("Este boton no puede ser activadoo ahora.");
+            }
         }
 
         private void bntDel_Click(object sender, EventArgs e)
         {
 
+            if (ativarBntDel)
+            {
+                FuncionesDB db = new FuncionesDB();
+                DataSet dts = new DataSet();
+                DataTable dt = new DataTable();
 
+                db.Connectar();
+                dts = db.PortarPerConsulta(consulta);
+
+                DataRow dr = dts.Tables["TrustedDevices"].NewRow();
+                dr["MAC"] = txtMac.Text.ToString();
+
+                dt.Rows.Remove(dr);
+
+                db.Actualitzar();
+            }
+            else
+            {
+                MessageBox.Show("Este boton no puede ser activado ahora.");
+            }
         }
 
         private void TrustedDevices_FormClosing(object sender, FormClosingEventArgs e)
