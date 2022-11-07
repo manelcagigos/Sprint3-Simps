@@ -87,7 +87,7 @@ namespace MESSI
 
             string valor = dts.Tables[0].Rows[0]["MAC"].ToString();
 
-            if (valor != null)
+            if (valor == null)
             {
                 bntDel.BackColor = Color.Green;
                 ativarBntDel = true;
@@ -103,7 +103,26 @@ namespace MESSI
         {
             if (ativarBntSav)
             {
+                //Variaveis necesarias
+                FuncionesDB db = new FuncionesDB();
+                DataSet dts = new DataSet();
+                string nombreTabla = "TrustedDevices";
 
+                db.Connectar();
+                dts = db.PortarTaula(nombreTabla);
+
+                //Datarow (ID, MAC, HOST)
+                DataRow dr = dts.Tables[0].NewRow();
+               
+                //(ID, MAC, HOST)
+                dr["MAC"] = txtMac.Text.ToString();
+                dr["HostName"] = txtHost.Text.ToString();
+
+                //Adicionar la linea
+                dts.Tables[0].Rows.Add(dr);
+
+                db.Actualitzar();
+                ativarBntSav = false;
             }
             else
             {
@@ -116,19 +135,32 @@ namespace MESSI
 
             if (ativarBntDel)
             {
-                FuncionesDB db = new FuncionesDB();
-                DataSet dts = new DataSet();
-                DataTable dt = new DataTable();
+                //FuncionesDB db = new FuncionesDB();
+                //DataSet dts = new DataSet();
+                //string nombreTabla = "TrustedDevices";
 
-                db.Connectar();
-                dts = db.PortarPerConsulta(consulta);
+                //db.Connectar();
+                //dts = db.PortarTaula(nombreTabla);
 
-                DataRow dr = dts.Tables["TrustedDevices"].NewRow();
-                dr["MAC"] = txtMac.Text.ToString();
+                //txtMac.DataBindings.Add("Text", db.PortarTaula(nombreTabla).Tables[0], "MAC");
+                //txtHost.DataBindings.Add("Text", db.PortarTaula(nombreTabla).Tables[0], "HostName");
 
-                dt.Rows.Remove(dr);
+                //txtMac.DataBindings.RemoveAt("Text", db.PortarTaula(nombreTabla).Tables[0], "MAC");
+                //db.Actualitzar();
 
-                db.Actualitzar();
+                //FuncionesDB db = new FuncionesDB();
+                //DataSet dts = new DataSet();
+                //DataTable dt = new DataTable();
+
+                //db.Connectar();
+                //dts = db.PortarPerConsulta(consulta);
+
+                //DataRow dr = dts.Tables["TrustedDevices"].NewRow();
+                //dr["MAC"] = txtMac.Text.ToString();
+
+                //dt.Rows.Remove(dr);
+
+                //db.Actualitzar();
             }
             else
             {
