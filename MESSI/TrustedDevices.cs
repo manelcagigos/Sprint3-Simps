@@ -22,7 +22,7 @@ namespace MESSI
         }
 
         string rutaAcceso = "Data Source=CAFUNEPORTATIL\\SQLEXPRESS;Initial Catalog=MACSBBDD;Integrated Security=True";
-        string consulta = "select * from dbo.datosdebbdd";
+        string consulta = "select * from TrustedDevices";
         bool existe = false;
 
         //Metodo para conseguir la MAC del PC
@@ -61,42 +61,38 @@ namespace MESSI
             return direccionMac;
         }
 
-
         private void TrustedDevices_Load(object sender, EventArgs e)
         {
+            string textoMac = txtMac.Text;
+            string textoHost = txtHost.Text;
+
             //pillar Mac y Host
             ArrayList direccion = direccionMac();
-            txtMac.Text = direccion[0].ToString().ToUpper();
-            txtHost.Text = Environment.MachineName.ToUpper();
+            textoMac = direccion[0].ToString().ToUpper();
+            textoHost = Environment.MachineName.ToUpper();
+
+            //escribir en form
+            txtHost.Text = textoHost;
+            txtMac.Text = textoMac;
 
             FuncionesDB db = new FuncionesDB();
-            
+            DataSet dts = new DataSet();
 
             //Verificar boton:
-            SqlConnection conect;
-            conect = new SqlConnection(rutaAcceso);
+            db.Connectar();
 
-            SqlDataAdapter tabla;
-            tabla = new SqlDataAdapter(consulta, conect);
+            dts = db.PortarPerConsulta(consulta);
 
-            conect.Open();
+            string valor = dts.Tables[0].Rows[0]["MAC"].ToString();
 
-            DataSet dts = new DataSet();
-            tabla.Fill(dts, "mac");
-
-            conect.Close();
-
-            DataRow dr = dts.Tables[0].NewRow();
-
-            for (int i = 0; i < dts.Tables.Count; i++)
+            if (valor != null)
             {
-                dts.Tables[0].Rows.Contains(txtMac);
-                existe = true;
+                bntDel.BackColor = Color.Green;
             }
-
-            dr["MAC"] = txtMac.Text;
-
-
+            else
+            {
+                bntSave.BackColor = Color.Green;
+            }
         }
 
         private void bntSave_Click(object sender, EventArgs e)
