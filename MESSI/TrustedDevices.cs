@@ -20,12 +20,10 @@ namespace MESSI
         {
             InitializeComponent();
         }
-
-        string rutaAcceso = "Data Source=CAFUNEPORTATIL\\SQLEXPRESS;Initial Catalog=MACSBBDD;Integrated Security=True";
-        string consulta = "select * from TrustedDevices";
-        bool existe = false;
+        string consulta = "select * from TrustedDevices where 1=1";
         bool ativarBntDel = false;
         bool ativarBntSav = false;
+        string id;
 
         //Metodo para conseguir la MAC del PC
         //Se necesita 2 usings, Collections y Net.Network
@@ -80,17 +78,19 @@ namespace MESSI
             FuncionesDB db = new FuncionesDB();
             DataSet dts = new DataSet();
 
+            consulta = consulta + " AND  MAC = '" + txtMac.Text + "' AND HostName = '" + txtHost.Text + "'";
+            
             //Verificar boton:
             db.Connectar();
 
             dts = db.PortarPerConsulta(consulta);
 
-            string valor = dts.Tables[0].Rows[0]["MAC"].ToString();
-
-            if (valor == null)
+            if (dts.Tables[0].Rows.Count >= 1)
             {
+                id = dts.Tables[0].Rows[0]["idDevice"].ToString();
+              
                 bntDel.BackColor = Color.Green;
-                ativarBntDel = true;
+                ativarBntDel = true;            
             }
             else
             {
@@ -132,35 +132,12 @@ namespace MESSI
 
         private void bntDel_Click(object sender, EventArgs e)
         {
-
             if (ativarBntDel)
             {
-                //FuncionesDB db = new FuncionesDB();
-                //DataSet dts = new DataSet();
-                //string nombreTabla = "TrustedDevices";
-
-                //db.Connectar();
-                //dts = db.PortarTaula(nombreTabla);
-
-                //txtMac.DataBindings.Add("Text", db.PortarTaula(nombreTabla).Tables[0], "MAC");
-                //txtHost.DataBindings.Add("Text", db.PortarTaula(nombreTabla).Tables[0], "HostName");
-
-                //txtMac.DataBindings.RemoveAt("Text", db.PortarTaula(nombreTabla).Tables[0], "MAC");
-                //db.Actualitzar();
-
-                //FuncionesDB db = new FuncionesDB();
-                //DataSet dts = new DataSet();
-                //DataTable dt = new DataTable();
-
-                //db.Connectar();
-                //dts = db.PortarPerConsulta(consulta);
-
-                //DataRow dr = dts.Tables["TrustedDevices"].NewRow();
-                //dr["MAC"] = txtMac.Text.ToString();
-
-                //dt.Rows.Remove(dr);
-
-                //db.Actualitzar();
+                FuncionesDB db = new FuncionesDB();
+                db.Connectar();
+                string del = "delete from TrustedDevices where idDevice = " + id;
+                db.Executa(del);
             }
             else
             {

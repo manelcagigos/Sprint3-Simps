@@ -106,7 +106,7 @@ namespace MESSI
             conn.Open();
 
             SqlCommand cmd = new SqlCommand(query, conn);
-
+            int registresAfectats = cmd.ExecuteNonQuery();
             cmd.Dispose();
 
             conn.Close();
