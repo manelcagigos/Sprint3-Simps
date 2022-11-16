@@ -48,6 +48,7 @@ namespace MESSI
             // 
             // combUser
             // 
+            this.combUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combUser.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combUser.FormattingEnabled = true;
             this.combUser.Location = new System.Drawing.Point(124, 26);
@@ -89,6 +90,7 @@ namespace MESSI
             this.btCheck.TabIndex = 4;
             this.btCheck.Text = "Check";
             this.btCheck.UseVisualStyleBackColor = true;
+            this.btCheck.Click += new System.EventHandler(this.btCheck_Click);
             // 
             // frmTrustedUsers
             // 

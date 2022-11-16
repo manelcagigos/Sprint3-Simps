@@ -37,7 +37,7 @@ namespace MESSI
             string key = "TrustedUser";
 
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings[key].Value = combUser.Text;
+            config.AppSettings.Settings[key].Value = combUser.Text; /*Convert.ToString(combUser.SelectedValue)*/
             config.Save(ConfigurationSaveMode.Modified);
 
             ConfigurationManager.RefreshSection("appSettings");
@@ -45,15 +45,49 @@ namespace MESSI
 
         private void frmTrustedUsers_Load(object sender, EventArgs e)
         {
+            btDelete.Enabled = false;
+            btRegister.Enabled = false;
+
             classeDB.Connectar();
 
             DataSet dts = new DataSet();
 
-            dts = classeDB.PortarPerConsulta("Select codeUser From Users");
+            dts = classeDB.PortarPerConsulta("Select * From Users", "Users");
 
-            combUser.DataBindings.Clear();
+            combUser.DataSource = dts.Tables["Users"];
 
-            combUser.DataBindings.Add("Items", dts.Tables["Users"], "codeUser");
+            combUser.DisplayMember = "codeUser";
+            combUser.ValueMember = "idUser";
+        }
+
+        private void btCheck_Click(object sender, EventArgs e)
+        {
+            string key = "TrustedUser";
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings[key].Value == combUser.Text)
+            {
+                btDelete.Enabled = true;
+                btDelete.BackColor = Color.Red;
+                config.AppSettings.Settings[key].Value = "";
+
+                btRegister.Enabled = false;
+                btRegister.BackColor = Color.White;
+            }
+            else
+            {
+                btRegister.Enabled = true;
+                btRegister.BackColor = Color.Green;
+
+                config.AppSettings.Settings[key].Value = combUser.Text;
+                config.Save(ConfigurationSaveMode.Modified);
+
+                ConfigurationManager.RefreshSection("appSettings");
+
+                btDelete.Enabled = false;
+                btDelete.BackColor = Color.White;
+            }
+           
         }
     }
 }
