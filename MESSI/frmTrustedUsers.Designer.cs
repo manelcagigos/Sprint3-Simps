@@ -67,6 +67,7 @@ namespace MESSI
             this.btDelete.TabIndex = 2;
             this.btDelete.Text = "Delete";
             this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // btRegister
             // 

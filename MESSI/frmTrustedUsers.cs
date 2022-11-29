@@ -69,7 +69,6 @@ namespace MESSI
             {
                 btDelete.Enabled = true;
                 btDelete.BackColor = Color.Red;
-                config.AppSettings.Settings[key].Value = "";
 
                 btRegister.Enabled = false;
                 btRegister.BackColor = Color.White;
@@ -79,15 +78,20 @@ namespace MESSI
                 btRegister.Enabled = true;
                 btRegister.BackColor = Color.Green;
 
-                config.AppSettings.Settings[key].Value = combUser.Text;
-                config.Save(ConfigurationSaveMode.Modified);
-
-                ConfigurationManager.RefreshSection("appSettings");
-
                 btDelete.Enabled = false;
                 btDelete.BackColor = Color.White;
             }
            
+        }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            string key = "TrustedUser";
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings[key].Value = null;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
     }
 }

@@ -21,5 +21,17 @@ namespace MESSI
         {
             Application.Exit();
         }
+
+        private void btnMenuSlide_Click(object sender, EventArgs e)
+        {
+            if(menuVertical.Width == 250)
+            {
+                menuVertical.Width = 45;
+            }
+            else
+            {
+                menuVertical.Width = 250;
+            }
+        }
     }
 }

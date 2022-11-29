@@ -18,12 +18,25 @@ namespace MESSI
         
         public virtual void Connectar()
         {
-            string cnx = "";
-            ConnectionStringSettings conf = ConfigurationManager.ConnectionStrings["Sprint3.Properties.Settings.DarkCoreConnectionString"];
+            Configuration conf = ConfigurationManager.OpenExeConfiguration("P1SecureCode.exe");
 
-            if (conf != null)
+            ConnectionStringsSection section = conf.GetSection("connectionStrings")
+
+            as ConnectionStringsSection;
+
+            if (!section.SectionInformation.IsProtected)
             {
-                cnx = conf.ConnectionString;
+                section.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
+            }
+
+            conf.Save();
+
+            string cnx = "";
+            ConnectionStringSettings conf2 = ConfigurationManager.ConnectionStrings["Sprint3.Properties.Settings.DarkCoreConnectionString"];
+
+            if (conf2 != null)
+            {
+                cnx = conf2.ConnectionString;
             }
                 
             conn = new SqlConnection(cnx);
