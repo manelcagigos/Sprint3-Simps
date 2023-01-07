@@ -16,7 +16,7 @@ namespace MESSI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrustedDevices());
+            Application.Run(new form_PantallaCarrega());
         }
     }
 }

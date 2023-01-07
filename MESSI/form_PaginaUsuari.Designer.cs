@@ -29,125 +29,93 @@ namespace MESSI
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel_superior = new System.Windows.Forms.Panel();
-            this.lb_username = new System.Windows.Forms.Label();
-            this.lb_messi = new System.Windows.Forms.Label();
-            this.bt_opcio1 = new System.Windows.Forms.Button();
-            this.bt_opcio2 = new System.Windows.Forms.Button();
-            this.bt_opcio3 = new System.Windows.Forms.Button();
-            this.bt_opcio4 = new System.Windows.Forms.Button();
-            this.panel_superior.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_PaginaUsuari));
+            this.barraTitulo = new System.Windows.Forms.Panel();
+            this.panelContenedor = new System.Windows.Forms.Panel();
+            this.btnMenuSlide = new System.Windows.Forms.PictureBox();
+            this.pbLogoEmpresa = new System.Windows.Forms.PictureBox();
+            this.menuVertical = new System.Windows.Forms.Panel();
+            this.barraTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMenuSlide)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoEmpresa)).BeginInit();
+            this.menuVertical.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel_superior
+            // barraTitulo
             // 
-            this.panel_superior.BackColor = System.Drawing.Color.Red;
-            this.panel_superior.Controls.Add(this.lb_username);
-            this.panel_superior.Controls.Add(this.lb_messi);
-            this.panel_superior.Location = new System.Drawing.Point(-1, 0);
-            this.panel_superior.Name = "panel_superior";
-            this.panel_superior.Size = new System.Drawing.Size(801, 39);
-            this.panel_superior.TabIndex = 0;
+            this.barraTitulo.Controls.Add(this.btnMenuSlide);
+            this.barraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barraTitulo.Location = new System.Drawing.Point(250, 0);
+            this.barraTitulo.Name = "barraTitulo";
+            this.barraTitulo.Size = new System.Drawing.Size(1050, 50);
+            this.barraTitulo.TabIndex = 1;
             // 
-            // lb_username
+            // panelContenedor
             // 
-            this.lb_username.AutoSize = true;
-            this.lb_username.BackColor = System.Drawing.Color.Red;
-            this.lb_username.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_username.Location = new System.Drawing.Point(661, 3);
-            this.lb_username.Name = "lb_username";
-            this.lb_username.Size = new System.Drawing.Size(137, 32);
-            this.lb_username.TabIndex = 1;
-            this.lb_username.Text = "USERNAME";
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenedor.Location = new System.Drawing.Point(250, 50);
+            this.panelContenedor.Name = "panelContenedor";
+            this.panelContenedor.Size = new System.Drawing.Size(1050, 600);
+            this.panelContenedor.TabIndex = 2;
             // 
-            // lb_messi
+            // btnMenuSlide
             // 
-            this.lb_messi.AutoSize = true;
-            this.lb_messi.BackColor = System.Drawing.Color.Red;
-            this.lb_messi.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_messi.Location = new System.Drawing.Point(3, 3);
-            this.lb_messi.Name = "lb_messi";
-            this.lb_messi.Size = new System.Drawing.Size(81, 32);
-            this.lb_messi.TabIndex = 0;
-            this.lb_messi.Text = "MESSI";
+            this.btnMenuSlide.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuSlide.Image")));
+            this.btnMenuSlide.Location = new System.Drawing.Point(6, 9);
+            this.btnMenuSlide.Name = "btnMenuSlide";
+            this.btnMenuSlide.Size = new System.Drawing.Size(35, 35);
+            this.btnMenuSlide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMenuSlide.TabIndex = 0;
+            this.btnMenuSlide.TabStop = false;
+            this.btnMenuSlide.Click += new System.EventHandler(this.btnMenuSlide_Click);
             // 
-            // bt_opcio1
+            // pbLogoEmpresa
             // 
-            this.bt_opcio1.BackColor = System.Drawing.Color.White;
-            this.bt_opcio1.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_opcio1.ForeColor = System.Drawing.Color.Black;
-            this.bt_opcio1.Location = new System.Drawing.Point(-1, 39);
-            this.bt_opcio1.Name = "bt_opcio1";
-            this.bt_opcio1.Size = new System.Drawing.Size(154, 89);
-            this.bt_opcio1.TabIndex = 1;
-            this.bt_opcio1.Text = "Opció 1";
-            this.bt_opcio1.UseVisualStyleBackColor = false;
+            this.pbLogoEmpresa.Image = ((System.Drawing.Image)(resources.GetObject("pbLogoEmpresa.Image")));
+            this.pbLogoEmpresa.Location = new System.Drawing.Point(0, 0);
+            this.pbLogoEmpresa.Name = "pbLogoEmpresa";
+            this.pbLogoEmpresa.Size = new System.Drawing.Size(250, 98);
+            this.pbLogoEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoEmpresa.TabIndex = 0;
+            this.pbLogoEmpresa.TabStop = false;
             // 
-            // bt_opcio2
+            // menuVertical
             // 
-            this.bt_opcio2.BackColor = System.Drawing.Color.White;
-            this.bt_opcio2.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_opcio2.ForeColor = System.Drawing.Color.Black;
-            this.bt_opcio2.Location = new System.Drawing.Point(-1, 122);
-            this.bt_opcio2.Name = "bt_opcio2";
-            this.bt_opcio2.Size = new System.Drawing.Size(154, 89);
-            this.bt_opcio2.TabIndex = 2;
-            this.bt_opcio2.Text = "Opció 2";
-            this.bt_opcio2.UseVisualStyleBackColor = false;
-            // 
-            // bt_opcio3
-            // 
-            this.bt_opcio3.BackColor = System.Drawing.Color.White;
-            this.bt_opcio3.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_opcio3.ForeColor = System.Drawing.Color.Black;
-            this.bt_opcio3.Location = new System.Drawing.Point(-1, 208);
-            this.bt_opcio3.Name = "bt_opcio3";
-            this.bt_opcio3.Size = new System.Drawing.Size(154, 89);
-            this.bt_opcio3.TabIndex = 3;
-            this.bt_opcio3.Text = "Opció 3";
-            this.bt_opcio3.UseVisualStyleBackColor = false;
-            // 
-            // bt_opcio4
-            // 
-            this.bt_opcio4.BackColor = System.Drawing.Color.White;
-            this.bt_opcio4.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_opcio4.ForeColor = System.Drawing.Color.Black;
-            this.bt_opcio4.Location = new System.Drawing.Point(-1, 292);
-            this.bt_opcio4.Name = "bt_opcio4";
-            this.bt_opcio4.Size = new System.Drawing.Size(154, 89);
-            this.bt_opcio4.TabIndex = 4;
-            this.bt_opcio4.Text = "Opció 4";
-            this.bt_opcio4.UseVisualStyleBackColor = false;
+            this.menuVertical.BackColor = System.Drawing.Color.Red;
+            this.menuVertical.Controls.Add(this.pbLogoEmpresa);
+            this.menuVertical.Dock = System.Windows.Forms.DockStyle.Left;
+            this.menuVertical.Location = new System.Drawing.Point(0, 0);
+            this.menuVertical.Name = "menuVertical";
+            this.menuVertical.Size = new System.Drawing.Size(250, 650);
+            this.menuVertical.TabIndex = 0;
             // 
             // form_PaginaUsuari
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(800, 379);
-            this.Controls.Add(this.bt_opcio4);
-            this.Controls.Add(this.bt_opcio3);
-            this.Controls.Add(this.bt_opcio2);
-            this.Controls.Add(this.bt_opcio1);
-            this.Controls.Add(this.panel_superior);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1300, 650);
+            this.Controls.Add(this.panelContenedor);
+            this.Controls.Add(this.barraTitulo);
+            this.Controls.Add(this.menuVertical);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "form_PaginaUsuari";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_PaginaUsuari_FormClosing);
-            this.panel_superior.ResumeLayout(false);
-            this.panel_superior.PerformLayout();
+            this.barraTitulo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnMenuSlide)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoEmpresa)).EndInit();
+            this.menuVertical.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel_superior;
-        private System.Windows.Forms.Label lb_username;
-        private System.Windows.Forms.Label lb_messi;
-        private System.Windows.Forms.Button bt_opcio1;
-        private System.Windows.Forms.Button bt_opcio2;
-        private System.Windows.Forms.Button bt_opcio3;
-        private System.Windows.Forms.Button bt_opcio4;
+        private System.Windows.Forms.Panel barraTitulo;
+        private System.Windows.Forms.PictureBox btnMenuSlide;
+        private System.Windows.Forms.Panel panelContenedor;
+        private System.Windows.Forms.PictureBox pbLogoEmpresa;
+        private System.Windows.Forms.Panel menuVertical;
     }
 }
