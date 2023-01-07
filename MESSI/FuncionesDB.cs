@@ -18,7 +18,7 @@ namespace MESSI
         
         public virtual void Connectar()
         {
-            Configuration conf = ConfigurationManager.OpenExeConfiguration("P1SecureCode.exe");
+            Configuration conf = ConfigurationManager.OpenExeConfiguration("Sprint3.exe");
 
             ConnectionStringsSection section = conf.GetSection("connectionStrings")
 
