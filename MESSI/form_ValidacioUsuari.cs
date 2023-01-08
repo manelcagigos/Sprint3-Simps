@@ -26,10 +26,11 @@ namespace MESSI
         int comptador_errors = 0;
         int numero_intents = 3;
         DataSet dts = new DataSet();
-        TrustedDevices td = new TrustedDevices();
 
         private void bt_LogIn_Click(object sender, EventArgs e)
         {
+            lb_intents.Text = Convert.ToString(numero_intents);
+
             StreamWriter sw = new StreamWriter("C:\\Users\\manel\\Desktop\\log_error.log", true);
 
             string consulta = "Select Users.* FROM Users Where(LOWER(Users.codeUser) = '" + tb_username.Text + "' AND Users.password = '" + tb_password.Text + "'); ";
@@ -39,13 +40,12 @@ namespace MESSI
             string valorCodeUser, valorPassUser, txtMAC, txtHOST;
             bool dadesCorrectes;
 
+            valorCodeUser = "";
+            valorPassUser = "";
+
             try
             {
-                if (dts.Tables[0].Rows.Count == 0)
-                {
-                    throw new Exception("Credenciales incorrectas.");
-                }
-                else
+                if (dts.Tables[0].Rows.Count >= 1)
                 {
                     valorCodeUser = dts.Tables[0].Rows[0]["codeUser"].ToString();
                     valorPassUser = dts.Tables[0].Rows[0]["password"].ToString();
@@ -56,7 +56,7 @@ namespace MESSI
                     sw.Write(DateTime.Now + ":" + tb_username.Text + "\n");
                     numero_intents--;
                     comptador_errors++;
-                    lb_intents.Text = Convert.ToString(numero_intents);
+                    throw new Exception("Usuario o contrseña incorrectos.");
                 }
                 else
                 {
@@ -84,20 +84,32 @@ namespace MESSI
                                 fmPU.Show();
                                 this.Hide();
                             }
+                            else
+                            {
+                                numero_intents--;
+                                comptador_errors++;
+                                throw new Exception("El usuario no es un usuario de confianza, contacte con su administrador.");
+                            }
                         }
                     }
-                    
-                }
+                    else
+                    {
+                        numero_intents--;
+                        comptador_errors++;
+                        throw new Exception("La MAC y HostName de este dispositivo no se encuentran en la base de datos.");
+                    }
 
-                if (comptador_errors == 3)
-                {
-                    MessageBox.Show("MES DE 3 ERROS, VIGILA AMB LA PRIMERA ORDRE!!!");
-                    Application.Exit();
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
+            }
 
+            if (comptador_errors == 3)
+            {
+                MessageBox.Show("3 ERRORES!!! VIGILIA CON LA PRIMERA ORDEN!!!");
+                Application.Exit();
             }
 
             sw.Close();
