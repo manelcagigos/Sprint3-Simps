@@ -81,7 +81,7 @@ namespace MESSI
             consulta = consulta + " AND  MAC = '" + txtMac.Text + "' AND HostName = '" + txtHost.Text + "'";
             
             //Verificar boton:
-            db.Connectar();
+            //db.Connectar();
 
             dts = db.PortarPerConsulta(consulta);
 

@@ -16,20 +16,20 @@ namespace MESSI
         private string query;
         DataSet dts;
         
-        public virtual void Connectar()
+        public void Connectar()
         {
-            Configuration conf = ConfigurationManager.OpenExeConfiguration("P1SecureCode.exe");
+            //Configuration conf = ConfigurationManager.OpenExeConfiguration("Sprint3.exe");
 
-            ConnectionStringsSection section = conf.GetSection("connectionStrings")
+            //ConnectionStringsSection section = conf.GetSection("connectionStrings")
 
-            as ConnectionStringsSection;
+            //as ConnectionStringsSection;
 
-            if (!section.SectionInformation.IsProtected)
-            {
-                section.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
-            }
+            //if (!section.SectionInformation.IsProtected)
+            //{
+            //    section.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
+            //}
 
-            conf.Save();
+            //conf.Save();
 
             string cnx = "";
             ConnectionStringSettings conf2 = ConfigurationManager.ConnectionStrings["Sprint3.Properties.Settings.DarkCoreConnectionString"];
@@ -45,6 +45,8 @@ namespace MESSI
         public DataSet PortarTaula(string taula)
         {
             dts = new DataSet();
+
+            Connectar();
 
             SqlDataAdapter adapter;
             query = "SELECT * From " + taula;
@@ -63,6 +65,8 @@ namespace MESSI
         {
             dts = new DataSet();
 
+            Connectar();
+
             SqlDataAdapter adapter;
             query = Consulta;
             adapter = new SqlDataAdapter(query, conn);
@@ -79,6 +83,8 @@ namespace MESSI
         public DataSet PortarPerConsulta(string Consulta, string nomDataTable)
         {
             dts = new DataSet();
+
+            Connectar();
 
             SqlDataAdapter adapter;
             query = Consulta;
@@ -105,6 +111,27 @@ namespace MESSI
             if (dts.HasChanges())
             {
                 int result = adapter.Update(dts.Tables[0]);
+            }
+
+            conn.Close();
+
+            return dts;
+        }
+
+        public DataSet Actualitzar(DataSet dts, string consulta)
+        {
+            int result = 0;
+
+            conn.Open();
+
+            SqlDataAdapter adapter;
+            adapter = new SqlDataAdapter(consulta, conn);
+            SqlCommandBuilder cmdBuilder;
+            cmdBuilder = new SqlCommandBuilder(adapter);
+
+            if (dts.HasChanges())
+            {
+                result = adapter.Update(dts.Tables[0]);
             }
 
             conn.Close();
