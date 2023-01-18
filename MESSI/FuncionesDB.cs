@@ -143,6 +143,8 @@ namespace MESSI
         {
             query = Consulta;
 
+            Connectar();
+
             conn.Open();
 
             SqlCommand cmd = new SqlCommand(query, conn);

@@ -25,6 +25,10 @@ namespace MESSI
 
         private void form_ValidacioAdmin_Load(object sender, EventArgs e)
         {
+            FuncionesDB funcionsBSDD = new FuncionesDB();
+
+            funcionsBSDD.Executa("DELETE FROM AdminCoordinates");
+
             Random R = new Random();
 
             List<String> LletrasNumeros = new List<string>();
@@ -110,6 +114,7 @@ namespace MESSI
                 if (!(coordenades.ContainsValue(num_aleatori_pass)))
                 {
                     coordenades.Add(LletrasNumeros[contador], num_aleatori_pass);
+                    funcionsBSDD.Executa("INSERT INTO AdminCoordinates(Coordinate, ValueCoord) VALUES('" + LletrasNumeros[contador] + "', '" + num_aleatori_pass + "')");
                     contador++;
                 }
             }
