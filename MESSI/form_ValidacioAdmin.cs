@@ -28,6 +28,8 @@ namespace MESSI
             FuncionesDB funcionsBSDD = new FuncionesDB();
 
             funcionsBSDD.Executa("DELETE FROM AdminCoordinates");
+            DataSet dts = new DataSet();
+            dts = funcionsBSDD.PortarTaula("AdminCoordinates");
 
             Random R = new Random();
 
@@ -114,10 +116,17 @@ namespace MESSI
                 if (!(coordenades.ContainsValue(num_aleatori_pass)))
                 {
                     coordenades.Add(LletrasNumeros[contador], num_aleatori_pass);
-                    funcionsBSDD.Executa("INSERT INTO AdminCoordinates(Coordinate, ValueCoord) VALUES('" + LletrasNumeros[contador] + "', '" + num_aleatori_pass + "')");
+                    DataRow dr = dts.Tables[0].NewRow();
+
+                    dr["Coordinate"] = LletrasNumeros[contador];
+                    dr["ValueCoord"] = num_aleatori_pass;
+
+                    dts.Tables[0].Rows.Add(dr);
                     contador++;
                 }
             }
+
+            funcionsBSDD.Actualitzar(dts, "SELECT * FROM AdminCoordinates");
 
             if (coordenades.ContainsKey(lb_LLetraNumero.Text))
             {
